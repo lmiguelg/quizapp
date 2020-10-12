@@ -1,0 +1,1 @@
+export const APIURL = "https://opentdb.com/api.php?amount=5"; 
