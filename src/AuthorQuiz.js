@@ -16,7 +16,6 @@ class AuthorQuiz extends Component {
         .then(res => res.json())
         .then((data) => {
           this.setState({ items: data.results })
-          console.log(data.results);
         })
         .catch(console.log)
     }
@@ -25,7 +24,7 @@ class AuthorQuiz extends Component {
         return ( 
             <div className="container">
                 <Hero/>
-                <BrowserRouter>
+                <BrowserRouter basename={process.env.PUBLIC_URL}>
                     <Switch>
                         <Route exact path="/" component={StartQuiz}/>
                  
