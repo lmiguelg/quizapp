@@ -1,8 +1,9 @@
 import React,{Component} from 'react'
 import Hero from './views/Hero'
 import Turn from './views/Turn'
-import Continue from './views/Continue'
+import StartQuiz from './views/StartQuiz'
 import {APIURL} from './config/config'
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
 
 
 class AuthorQuiz extends Component {
@@ -10,7 +11,7 @@ class AuthorQuiz extends Component {
         items: null
     }
 
-    componentWillMount() {
+    componentDidMount() {
         fetch(APIURL)
         .then(res => res.json())
         .then((data) => {
@@ -22,14 +23,24 @@ class AuthorQuiz extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className="container">
                 <Hero/>
-                <Turn {...this.state}/>   
-                <Continue/>
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path="/" component={StartQuiz}/>
+                 
+                        <Route path="/quiz">
+                            <Turn {...this.state}/>   
+                        </Route>
+                    </Switch>
+                </BrowserRouter>
+                
+                
+               
             </div>
             
          );
     }
 }
  
-export default AuthorQuiz ;
+export default AuthorQuiz;
