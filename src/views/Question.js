@@ -21,6 +21,11 @@ const Question = ({item, onAnswerSelected}) => {
         });
         setAnswers(answersObj);
 
+        return () => {
+            setAnswers([]);
+            setUserAnswered(false);
+        }
+
     }, [item]);
 
     if(userAnswered){

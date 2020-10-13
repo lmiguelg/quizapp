@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Question from './Question'
 import EndGameScreen from './EndGameScreen'
 import ProgressBar from './ProgressBar'
+
 
 const Turn = ({ items }) => {
 
@@ -19,6 +20,17 @@ const Turn = ({ items }) => {
         return isCorrect;
     }
 
+    useEffect(() => {
+        
+        //unmount
+        return () => {
+            setScore(0);
+            setQuestionIndex(0);
+
+        }
+
+    }, []);
+    
     if(items === null) return <div></div>
     else{
         return (
